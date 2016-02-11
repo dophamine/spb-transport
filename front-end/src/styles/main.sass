@@ -22,7 +22,8 @@ a
 	&:hover, &:active, &:link
 		color: inherit
 		text-decoration: none
-
+.show 
+	display: block !important
 .wrapper
 	width: 100%
 	height: 100%	
@@ -96,7 +97,7 @@ a
 
 #metro-input
 	width: 100%
-	height: 35px
+	min-height: 35px
 	margin: 0 auto
 	display: block
 	padding: 7px 10px
@@ -105,9 +106,27 @@ a
 	border: 2px solid $input
 	color: $input
 	resize: none
-	// line-height: 35px
+	overflow-x: hidden
+	line-height: normal
+	vertical-align: baseline
+	z-index: 2
 	&:focus
+		border-color: $ico
 		outline: none
+	span
+		display: inline-block
+		position: relative
+		padding: 0 5px
+		padding-right: 20px
+		vertical-align: baseline
+		cursor: pointer
+		margin-bottom: .7rem
+		margin-right: .3rem
+		&:first-child:before
+			content: ' ';
+		&:hover
+			background: $bg-sec
+			outline: 3px solid $bg-sec
 .input-wrap
 	position: relative
 	::placeholder
@@ -115,6 +134,7 @@ a
 	.arrow
 		top: auto
 		bottom: 0
+		height: 100%
 		background: #fff
 		border: 2px solid $input
 		&::after
@@ -126,9 +146,10 @@ a
 		border-top: none
 		margin: 0
 		padding: 0
-		// display: none
+		display: none
 		max-height: 300px
 		width: 100%
+		height: auto
 		.item
 			display: block
 			margin: 0
@@ -178,3 +199,19 @@ a
 	font-weight: 700
 	text-align: center
 	line-height: 95px
+
+.cross
+	position: relative
+	&::before, &::after
+		content: ''
+		position: absolute
+		top: 0
+		right: 5px
+		width: 13px
+		height: 13px
+		border-right: 1px solid $input
+		transform-origin: 50% 50%
+	&::before
+		transform: rotate(-45deg) translate(-5px,5px)
+	&::after
+		transform:  rotate(45deg) translate(-1px,-1px)

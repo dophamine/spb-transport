@@ -18,19 +18,21 @@
 					<a href="" class="type type-route">по маршруту</a>
 					<a href="" class="type type-stop">по остановке</a>
 					<a href="" class="type type-street">по улице</a>
-					<a href="" class="type type-metro">по станции метро</a>
+					<a href="" class="type type-metro active">по станции метро</a>
 				</div>
 				<div class="input-menu">
-					<!-- <div class="input-wrap">
-						<input id="metro-input" type="text" name="metro" value="" placeholder="Выбрать из станций метро">
-						<div class="arrow arrow-bottom"></div>
-					</div> -->
 					<div class="input-wrap">
-						<textarea id="metro-input" name="metro" placeholder="Выбрать из станций метро"></textarea>
+						<div id="metro-input" name="metro" placeholder="Выбрать из станций метро" contenteditable>
+							<span class="cross" contenteditable="false">Автовокзал</span>
+							<span class="cross" contenteditable="false">Адмиралтейская</span>
+							<span class="cross" contenteditable="false">Академическая</span>
+							<span class="cross" contenteditable="false">Балтийская</span>
+							<span class="cross" contenteditable="false">Василеостровская</span>
+						</div>
 						<div class="arrow arrow-bottom"></div>
-					</div>
-					<ul class="vars">
-						<li class="item">Автово</li>
+					</div>				
+					<ul id="metro-list" class="vars">
+						<li class="item">Автовокзал</li>
 						<li class="item">Адмиралтейская</li>
 						<li class="item">Академическая</li>
 						<li class="item">Балтийская</li>
