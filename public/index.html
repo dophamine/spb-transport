@@ -4,12 +4,27 @@
 	<meta charset="UTF-8">
 	<title>app</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,400italic,300italic,300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="assets/styles/bundle.min.css">
 </head>
 <body>
 	<div class="wrapper">
 		<div id="map"></div>
-		<div id="panel"></div>
+		<div id="panel">
+			<button id="toggle-panel" class="active">></button>
+			<div class="panel-container">
+				<h1 class="title">Выбрать транспорт по типу поиска</h1>
+				<div class="type-wrap">
+					<a href="" class="type type-route">по маршруту</a>
+					<a href="" class="type type-stop">по остановке</a>
+					<a href="" class="type type-street">по улице</a>
+					<a href="" class="type type-metro">по станции метро</a>
+				</div>
+			</div>
+		</div>
 	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="assets/scripts/main.min.js" type="text/javascript" charset="utf-8"></script>
+	
 </body>
 </html>

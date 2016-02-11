@@ -1,5 +1,7 @@
 @import "bourbon/bourbon"
 @import 'fonts'
+@import 'colors'
+
 html
 	height: 100%
 	font-size: 14px
@@ -24,27 +26,73 @@ a
 .wrapper
 	width: 100%
 	height: 100%	
-	border: 1px solid red
 	position: relative
+	min-height: 500px
 #panel
 	position: fixed
-	width: 320px
-	outline: 1px solid red
+	width: 360px
 	top: 0
 	right: 0
 	height: 100%
-	padding: 20px 40px 
+	padding: 20px 0px
+	box-shadow: -2px 0 4px rgba(0,0,0,.2)
+	transition: right .3s ease-in-out
+	.panel-container
+		margin: 0 auto
+		width: 85%
 	.title
 		font-size: 1rem
 		text-align: center
+	.type-wrap
+		text-align: center
+		margin-top: 2em
 	.type
 		font-size: .9rem
 		display: inline-block
-		// width: 120px
 		text-align: right
-		padding: 10px 0 10px 30px
+		padding: 10px 2em 10px 3em
+		// width: 40%
 		margin: 0
 		position: relative
-		&:after
+		height: 40px
+		&::before
+			content: ''
 			background: url('../images/sprite.png') no-repeat
-			
+			position: absolute
+			top: .3em
+			left: 0
+			height: 29px
+			background-position: 0 0
+		&:hover, &.active
+			text-decoration: underline
+			&::before
+				background-position-y: -29px
+	.type-route::before
+		width: 32px
+	.type-stop::before
+		width: 18px
+		background-position-x: -32px
+	.type-street::before
+		width: 25px
+		background-position-x: -75px
+	.type-metro::before
+		width: 25px
+		background-position-x: -50px
+#panel.hidden
+	right: -330px
+#toggle-panel
+	font-weight: 300
+	background: $ico
+	border: none
+	outline: none
+	width: 32px
+	height: 32px
+	color: #fff
+	text-align: center
+	text-transform: uppercase
+	font-size: 1.6em
+	line-height: 32px
+	position: absolute
+	top: 20px
+	left: -20px
+	padding: 0
