@@ -59,6 +59,9 @@ a
 		margin: 0
 		position: relative
 		height: 40px
+		color: $ico2
+		font-weight: 400
+		font-style: italic
 		&::before
 			content: ''
 			background: url('../images/sprite.png') no-repeat
@@ -95,7 +98,7 @@ a
 	left: -20px
 	padding: 0
 
-#metro-input
+#main-input
 	width: 100%
 	min-height: 35px
 	margin: 0 auto
@@ -103,7 +106,7 @@ a
 	padding: 7px 35px 0 10px
 	font-size: .9rem
 	border: 2px solid $input
-	color: $input
+	color: $txt
 	resize: none
 	overflow-x: hidden
 	line-height: normal
@@ -127,8 +130,6 @@ a
 			outline: 3px solid $bg-sec
 .input-wrap
 	position: relative
-	::placeholder
-		font-weight: 300
 	.arrow
 		top: auto
 		bottom: 0
@@ -155,6 +156,18 @@ a
 			cursor: pointer
 			&:hover
 				background: $bg-sec
+#txt
+	padding: 0 5px
+	outline: none
+	border: none
+	margin-bottom: .7rem
+	width: 100%
+	&::placeholder
+		font-weight: 300
+		color: $ico2
+	&.ph-hidden::placeholder
+		color: transparent
+
 .arrow
 	cursor: pointer
 	background: #333
@@ -197,9 +210,13 @@ a
 	font-weight: 700
 	text-align: center
 	line-height: 95px
+	outline: none
 
 .cross
-	position: relative
+	position: absolute
+	width: 17px
+	height: 100%
+	right: 0
 	&::before, &::after
 		content: ''
 		position: absolute

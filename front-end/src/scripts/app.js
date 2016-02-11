@@ -1,9 +1,28 @@
 $(document).ready(function() {
+
+	function inArr (arr, value) {
+		if (arr.length === 0) return -1;
+		for (var i=0; i < arr.length; i++) {
+			if (arr[i] === value) return i;
+		}
+		return -1;
+	}
+
+	function spanClean () {
+		spans = [];
+		$('.rc').each(function(index, el) {
+			spans.push($(el).text());
+		});
+	}
+
 	var tglPanel = document.getElementById('toggle-panel');
 	var panel = document.getElementById('panel');
-	var metroInput = document.getElementById('metro-input');
-	var metroList = document.getElementById('metro-list');
+	var mainInput = document.getElementById('main-input');
+	var List = document.getElementById('list');
+	var txt = document.getElementById('txt');
 
+	//spans in input
+	var spans = [];
 
 	// Toggle panel
 	$(tglPanel).on('click', function(){
@@ -18,7 +37,7 @@ $(document).ready(function() {
 
 	// Toggle list
 	$('.input-menu .arrow').on('click', function() {
-		$('#metro-list').toggleClass('show');
+		$('#list').toggleClass('show');
 		
 		if ($(this).hasClass('active')) {
 			$(this).removeClass("arrow-top").addClass("arrow-bottom");
@@ -28,18 +47,37 @@ $(document).ready(function() {
 		$(this).toggleClass('active');
 	});
 
-	//input-menu. add items
-	$('#metro-list .item').click(function() {
+	//input-menu. add items to input
+	$('#list .item').click(function() {
 		var value = $(this).text();
-		var temp = $(metroInput).html();
-		$(metroInput).html(temp + "<span class='cross' contenteditable='false'>" + value+ "</span>");
-		$('#metro-input span').click(function(){
-			$(this).remove();
+
+		//add spans
+		if (inArr(spans, value) === -1) {
+			spans.push(value);
+			$(txt).before("<span class='rc'>" + value + "<i class='cross'></i></span>");
+		}
+
+		// remove items
+		$('#main-input span:nth-last-child(2) > .cross').on('click', function() {
+			var value = $(this).parent('span').text();
+			$(this).parent('span').remove();
+			spanClean();
 		});
 	});
 
-	$('#metro-input span').click(function(){
-		$(this).remove();
+	//Toggle placeholder
+	$('.input-menu').on('click', function() {
+		if (spans.length > 0) {
+			if (!$(txt).hasClass('ph-hidden')) {
+				$(txt).addClass('ph-hidden');
+			}
+		} else if ($(txt).hasClass('ph-hidden')) {
+			$(txt).removeClass('ph-hidden');
+		}
+	});
+
+	$(mainInput).click(function() {
+		$(txt).focus();
 	});
 
 });
