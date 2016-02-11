@@ -11,7 +11,7 @@
 	<div class="wrapper">
 		<div id="map"></div>
 		<div id="panel">
-			<button id="toggle-panel" class="active">></button>
+			<button id="toggle-panel" class="arrow arrow-right"><div></div></button>
 			<div class="panel-container">
 				<h1 class="title">Выбрать транспорт по типу поиска</h1>
 				<div class="type-wrap">
@@ -20,6 +20,26 @@
 					<a href="" class="type type-street">по улице</a>
 					<a href="" class="type type-metro">по станции метро</a>
 				</div>
+				<div class="input-menu">
+					<!-- <div class="input-wrap">
+						<input id="metro-input" type="text" name="metro" value="" placeholder="Выбрать из станций метро">
+						<div class="arrow arrow-bottom"></div>
+					</div> -->
+					<div class="input-wrap">
+						<textarea id="metro-input" name="metro" placeholder="Выбрать из станций метро"></textarea>
+						<div class="arrow arrow-bottom"></div>
+					</div>
+					<ul class="vars">
+						<li class="item">Автово</li>
+						<li class="item">Адмиралтейская</li>
+						<li class="item">Академическая</li>
+						<li class="item">Балтийская</li>
+						<li class="item">Бухарестская</li>
+						<li class="item">Василеостровская</li>
+						<li class="item">Владимирская</li>
+					</ul>
+				</div>
+				<a id="orderNow" href="">заказать</a>
 			</div>
 		</div>
 	</div>
