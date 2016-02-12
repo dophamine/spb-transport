@@ -62,7 +62,7 @@ a
 		color: $ico2
 		font-weight: 400
 		font-style: italic
-		&::before
+		&:before
 			content: ''
 			background: url('../images/sprite.png') no-repeat
 			position: absolute
@@ -72,19 +72,25 @@ a
 			background-position: 0 0
 		&:hover, &.active
 			text-decoration: underline
-			&::before
-				background-position-y: -29px
-	.type-route::before
+			&.type-route:before
+				background-position: 0 -29px
+			&.type-stop:before
+				background-position: -32px -29px
+			&.type-street:before
+				background-position: -75px -29px
+			&.type-metro:before
+				background-position: -50px -29px
+	.type-route:before
 		width: 32px
-	.type-stop::before
+	.type-stop:before
 		width: 18px
-		background-position-x: -32px
-	.type-street::before
+		background-position: -32px 0
+	.type-street:before
 		width: 25px
-		background-position-x: -75px
-	.type-metro::before
+		background-position: -75px 0
+	.type-metro:before
 		width: 25px
-		background-position-x: -50px
+		background-position: -50px 0
 #panel.hidden
 	right: -330px
 #toggle-panel
@@ -135,7 +141,7 @@ a
 		height: 100%
 		background: #fff
 		border: 2px solid $input
-		&::after
+		&:after
 			border-color: $input
 .input-menu
 	margin-top: 2rem
@@ -188,13 +194,13 @@ a
 		top: 50%
 		left: 50%
 		transform-origin: 50% 50%
-.arrow-bottom::after
+.arrow-bottom:after
 	transform: translate(-50%,-70%) rotate(135deg)
-.arrow-left::after
+.arrow-left:after
 	transform: translate(-30%,-50%) rotate(-135deg)
-.arrow-right::after
+.arrow-right:after
 	transform: translate(-80%,-50%) rotate(45deg)
-.arrow-top::after
+.arrow-top:after
 	transform: translate(-50%,-30%) rotate(-45deg)
 
 #orderNow
@@ -217,7 +223,7 @@ a
 	width: 17px
 	height: 100%
 	right: 0
-	&::before, &::after
+	&:before, &:after
 		content: ''
 		position: absolute
 		top: 0
@@ -226,7 +232,7 @@ a
 		height: 13px
 		border-right: 1px solid $input
 		transform-origin: 50% 50%
-	&::before
+	&:before
 		transform: rotate(-45deg) translate(-5px,5px)
-	&::after
+	&:after
 		transform:  rotate(45deg) translate(-1px,-1px)
