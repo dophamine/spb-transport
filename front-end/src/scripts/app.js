@@ -57,22 +57,24 @@ $(document).ready(function() {
 	});
 
 	//input-menu. add items to input
-	$('#list .item').click(function() {
-		var value = $(this).text();
+	function listBindEvt () {
+		$('#list .item').on('click', function() {
+			var value = $(this).text();
 
-		//add spans
-		if (inArr(spans, value) === -1) {
-			spans.push(value);
-			$(txt).before("<span class='rc'>" + value + "<i class='cross'></i></span>");
-		}
+			//add spans
+			if (inArr(spans, value) === -1) {
+				spans.push(value);
+				$(txt).before("<span class='rc'>" + value + "<i class='cross'></i></span>");
+			}
 
-		// remove items
-		$('#main-input span:nth-last-child(2) > .cross').on('click', function() {
-			var value = $(this).parent('span').text();
-			$(this).parent('span').remove();
-			spanClean();
+			// remove items
+			$('#main-input span:nth-last-child(2) > .cross').on('click', function() {
+				var value = $(this).parent('span').text();
+				$(this).parent('span').remove();
+				spanClean();
+			});
 		});
-	});
+	}
 
 	//Toggle placeholder
 	$('.input-menu').on('click', function() {
@@ -89,4 +91,50 @@ $(document).ready(function() {
 		$(txt).focus();
 	});
 
+
+	//auto complete 
+	
+	function suggest (str) {
+		console.log(str);
+		return function (matches) {
+			for (var i = 0; i < matches.length; i++) {
+				$(list).append(renderItem(matches[i], str));
+			}
+			listBindEvt();
+		};
+	}
+
+	function search(term, suggest){
+		term = term.toLowerCase();
+		var choices = [
+			'Автово', 
+			'Адмиралтейская', 
+			'Академическая',
+			'Балтийская',
+			'Бухарестская',
+			'Василеостровская',
+			'Владимирская'
+		];
+		var matches = [];
+		for (var i=0; i<choices.length; i++)
+			if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
+		suggest(matches);
+	}
+
+	$('#txt').on('input propertychange', function() {
+		var str = $(this).val();
+		$(list).children().remove();
+		if (str.length >= 1) {
+			search(str, suggest(str));
+			if (!$(listArrow).hasClass('active')) {
+				$(listArrow).click();
+			}
+		}
+	});
+
+	function renderItem (item, search){
+		search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+		var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
+		return '<li class="item" data-val="' + item + '">' + item.replace(re, "<b>$1</b>") + '</li>';
+	}
 });
