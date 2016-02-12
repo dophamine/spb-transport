@@ -20,6 +20,7 @@ $(document).ready(function() {
 	var mainInput = document.getElementById('main-input');
 	var List = document.getElementById('list');
 	var txt = document.getElementById('txt');
+	var listArrow = $('.input-menu .arrow');
 
 	//spans in input
 	var spans = [];
@@ -36,7 +37,7 @@ $(document).ready(function() {
 	});
 
 	// Toggle list
-	$('.input-menu .arrow').on('click', function() {
+	$(listArrow).on('click', function() {
 		$('#list').toggleClass('show');
 		
 		if ($(this).hasClass('active')) {
@@ -45,6 +46,14 @@ $(document).ready(function() {
 			$(this).removeClass("arrow-bottom").addClass("arrow-top");
 		}
 		$(this).toggleClass('active');
+	});
+
+	//hide list on blur
+	$(panel).on('click', function(e) {
+		if (!$(e.target).is('.input-menu *') && $(listArrow).hasClass('active') ) {
+			$(listArrow).click();
+		}
+		console.log("ok, you clicked on " + $(e.target));
 	});
 
 	//input-menu. add items to input
