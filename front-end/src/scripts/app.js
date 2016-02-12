@@ -21,6 +21,7 @@ $(document).ready(function() {
 	var List = document.getElementById('list');
 	var txt = document.getElementById('txt');
 	var listArrow = $('.input-menu .arrow');
+	var noMatches = false;
 
 	//spans in input
 	var spans = [];
@@ -53,7 +54,6 @@ $(document).ready(function() {
 		if (!$(e.target).is('.input-menu *') && $(listArrow).hasClass('active') ) {
 			$(listArrow).click();
 		}
-		console.log("ok, you clicked on " + $(e.target));
 	});
 
 	//input-menu. add items to input
@@ -95,7 +95,6 @@ $(document).ready(function() {
 	//auto complete 
 	
 	function suggest (str) {
-		console.log(str);
 		return function (matches) {
 			for (var i = 0; i < matches.length; i++) {
 				$(list).append(renderItem(matches[i], str));
@@ -119,6 +118,10 @@ $(document).ready(function() {
 		for (var i=0; i<choices.length; i++)
 			if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
 		suggest(matches);
+
+		//toggle list if matches not found
+		noMatches = matches.length > 0 ? false : true;
+		
 	}
 
 	$('#txt').on('input propertychange', function() {
@@ -127,6 +130,10 @@ $(document).ready(function() {
 		if (str.length >= 1) {
 			search(str, suggest(str));
 			if (!$(listArrow).hasClass('active')) {
+				$(listArrow).click();
+			}
+		} else {
+			if ($(listArrow).hasClass('active')) {
 				$(listArrow).click();
 			}
 		}
