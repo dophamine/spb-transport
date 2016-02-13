@@ -187,7 +187,7 @@ $(document).ready(function() {
 					<h2 class="district-title">' + key + ':</h2>
 						<ul class="route-list">\n' + list + '</ul></div>';
 		$(routes).append(body);
-		$('.route-title').on('click', routehandler);
+		$('.route-title').one('click', routehandler);
 	}
 
 	//input-menu. add items to input
@@ -336,6 +336,7 @@ $(document).ready(function() {
 			route.toggleClass('detailed active');
 			$('.context').remove();
 		}
+		$(this).one('click', routehandler);
 	}
 
 	//rendering Route context
