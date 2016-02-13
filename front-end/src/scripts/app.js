@@ -145,4 +145,15 @@ $(document).ready(function() {
 		var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
 		return '<li class="item" data-val="' + item + '">' + item.replace(re, "<b>$1</b>") + '</li>';
 	}
+
+	$('.panel-wrap').mCustomScrollbar({
+		theme:"minimal-dark",
+		autoHideScrollbar: true
+	});
+
+	$('#stop-list').mCustomScrollbar({
+		theme:"minimal-dark",
+		autoHideScrollbar: true
+	});
+
 });

@@ -24,6 +24,17 @@ a
 		text-decoration: none
 .show 
 	display: block !important
+.dn
+	display: none
+
+// ScrollBar hacks
+#panel .mCSB_inside>.mCSB_container
+	margin-right: 0
+.mCSB_dragger_bar
+	opacity: .7
+
+// ********* 
+
 .wrapper
 	width: 100%
 	height: 100%	
@@ -37,12 +48,17 @@ a
 	top: 0
 	right: 0
 	height: 100%
-	padding: 20px 5px 110px
+	padding: 20px 5px 95px
 	box-shadow: -2px 0 4px rgba(0,0,0,.2)
 	transition: right .3s ease-in-out
 	.panel-container
 		margin: 0 auto
 		width: 85%
+	.panel-wrap
+		width: 100%
+		height: 100%
+		overflow: hidden
+		position: relative
 	.title
 		font-size: 1rem
 		text-align: center
@@ -145,7 +161,7 @@ a
 			border-color: $input
 .input-menu
 	margin-top: 2rem
-
+	margin-bottom: 1.5rem
 	.vars-wrap
 		position: relative
 		z-index: 2
@@ -251,6 +267,7 @@ a
 		font-style: italic
 		font-size: 1rem
 		color: $txt2
+		margin-top: 0
 	.route-list
 		font-size: 0
 		width: 100%
@@ -316,8 +333,6 @@ a
 		position: relative
 		margin-bottom: 20px
 		max-height: 200px
-		// hidden
-		// display: none
 		.context-head
 			background: $main
 			height: 50px
@@ -334,14 +349,16 @@ a
 				line-height: 50px
 				text-align: center
 		.vars
+			overflow-y: auto
 			display: block
 			position: static
 			font-size: 1rem
 			padding: 10px 0
+			max-height: 150px
 			.item
 				padding-left: 40px
 				position: relative
-				font-size: 14px
+				font-size: 12px
 				&:before, &:after
 					position: absolute
 					content: ''
