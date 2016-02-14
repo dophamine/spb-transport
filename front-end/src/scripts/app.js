@@ -89,12 +89,15 @@ $(document).ready(function() {
 		for (var k=0; k<choices.length; k++)
 			if (~choices[k].toLowerCase().indexOf(term)) matches.push(choices[k]);
 		suggest(matches);
+		
+		$(list).mCustomScrollbar({
+			theme:"minimal-dark",
+			autoHideScrollbar: true
+		});
 
 		//toggle list if matches not found
 		noMatches = matches.length > 0 ? false : true;
 	}
-
-
 	//formatting and returning vars
 	function renderItem (item, search){
 		search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
@@ -359,8 +362,6 @@ $(document).ready(function() {
 			$(listArrow).click();
 		}
 	});
-
-	
 
 	//Toggle placeholder
 	$('.input-menu').on('click', function() {
