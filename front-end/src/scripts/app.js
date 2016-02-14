@@ -146,10 +146,11 @@ $(document).ready(function() {
 		$('.type').not($(this)).removeClass('active');
 		$(this).toggleClass('active');
 		$(inputMenu).removeClass('show');
+		clean();
 		if ($(this).hasClass('active')) {
 			$(inputMenu).addClass('show');
+			$(txt).attr('placeholder', $(this).data('hint'));
 		}
-		clean();
 	}
 
 	function routehandler () {
@@ -343,7 +344,6 @@ $(document).ready(function() {
 	//Toggle panel
 	$(tglPanel).on('click', togglePanel);
 
-	
 	// Toggle list
 	$(listArrow).on('click', function() {
 		$('#list').toggleClass('show');
