@@ -1,4 +1,7 @@
+
+
 $(document).ready(function() {
+	ymaps.ready(function() {
 
 	function inArr (arr, value) {
 		if (arr.length === 0) return -1;
@@ -402,4 +405,11 @@ $(document).ready(function() {
 	//toggle route
 	// $('.route-title').bind('click', routehandler(e));
 
+	//Yandex map ***********************
+
+	myMap = new ymaps.Map("map", {
+        center: [59.93322502, 30.38288775],
+        zoom: 11
+    });
+});
 });
