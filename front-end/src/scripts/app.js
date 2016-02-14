@@ -200,6 +200,8 @@ $(document).ready(function() {
 			});
 		});
 
+		renderRoute();
+
 		route.toggleClass('active');
 		if (route.hasClass('detailed')) {
 			route.toggleClass('detailed active');
@@ -406,9 +408,25 @@ $(document).ready(function() {
 	// $('.route-title').bind('click', routehandler(e));
 
 	//Yandex map ***********************
+	var lastRoute;
+	function renderRoute () {
+		ymaps.route(['Питер Метро Московская', 'Питер Метро Международная']).then(
+			function(route) {
+				if (lastRoute) {
+					myMap.geoObjects.remove(lastRoute);
+				}
+				lastRoute = route;
+				myMap.geoObjects.add(route);
+			},
+			function(error) {
+				console.log('Возникла ошибка: ' + error.message);
+			}
+		);
+
+	}
 
 	myMap = new ymaps.Map("map", {
-        center: [59.93322502, 30.38288775],
+        center: [59.86411517, 30.34650462],
         zoom: 11
     });
 });
