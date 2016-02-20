@@ -189,7 +189,8 @@ $(document).ready(function() {
 		}
 	}
 
-	function routehandler () {
+	function routehandler (e) {
+		e.stopImmediatePropagation();
 		var route = $(this).closest('.route');
 		var a = $('.detail-txt', route);
 		var title = route.closest('.route-section').children('.district-title').text();
@@ -200,6 +201,7 @@ $(document).ready(function() {
 		//toggle route detail
 		$(a).one('click', function(e) {
 			e.preventDefault();
+			e.stopImmediatePropagation();
 
 			$(route).toggleClass('detailed');
 
