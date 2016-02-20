@@ -42,9 +42,7 @@ $(document).ready(function() {
 		for (var i in newjson[key].routes) {
 			list += '<li class="route">\n\t<span class="route-title">' + i + '</span>\n<div class="detail"><a href="#" class="detail-txt">Подробнее</a></div>\n</li>';
 		}
-		body = '<div class="route-section">
-					<h2 class="district-title">' + key + ':</h2>
-						<ul class="route-list">\n' + list + '</ul></div>';
+		body = '<div class="route-section"><h2 class="district-title">' + key + ':</h2><ul class="route-list">\n' + list + '</ul></div>';
 		$(routes).append(body);
 		$('.route-title').one('click', routehandler);
 	}
@@ -72,6 +70,40 @@ $(document).ready(function() {
 		});
 	}
 
+	//autocmoplete list navigation by keyboard
+	function keyDownHandler (e) {
+		e.stopImmediatePropagation();
+		var key = e.keyCode || e.which;
+		var list = $("#list");
+		var next, selected;
+		var items = $('.item', list);
+		if (items.size() === 0) return;
+		if (key === 38 || key === 40) {		
+			if (items.hasClass('selected')) {
+				selected = list.find('.selected');
+				if (key === 38) {
+					next = selected.index() === 0 ? selected : selected.prev();
+				} else {
+					next = selected.index() === items.length - 1 ? selected : selected.next();
+				}
+				selected.removeClass('selected');
+				next.addClass('selected');
+			} else {
+				next = items.first();
+				next.addClass('selected');
+			}
+		}
+		else if (key === 13) {
+			if (list.hasClass('show')) {
+				list.find('.selected').trigger('click');
+			}
+		} else if (key === 27) {
+			if (list.hasClass('show')) {
+				$(listArrow).trigger('click');
+			}
+		}
+	}
+
 	//auto complete 
 	
 	function suggest (str) {
@@ -82,6 +114,7 @@ $(document).ready(function() {
 			listBindEvt();
 		};
 	}
+
 	function search(term, suggest){
 		term = term.toLowerCase();
 		var choices = [];
@@ -326,6 +359,110 @@ $(document).ready(function() {
 					"Метро Международная"
 	            ]
 	        }
+	    },
+	    "Привокзальная": {
+	        "routes" : {
+	            "К 65" : [
+	            	"Славы проспект (ул. Софийская)",
+					"Софийская д.40",
+					"Софийская д.43",
+					"Белы Куна (ул. Софийская)",
+					"Белы Куна (ул. Пражская)",
+					"Метро Международная"
+	            ],
+	            "К 46" : [
+	            	"Славы проспект (ул. Софийская)",
+					"Софийская д.40",
+					"Софийская д.43",
+					"Белы Куна (ул. Софийская)",
+					"Белы Куна (ул. Пражская)",
+					"Метро Международная"
+	            ],
+	            "К 4" : [
+	            	"Славы проспект (ул. Софийская)",
+					"Софийская д.40",
+					"Софийская д.43",
+					"Белы Куна (ул. Софийская)",
+					"Белы Куна (ул. Пражская)",
+					"Метро Международная"
+	            ],
+	            "К 48" : [
+	            	"Славы проспект (ул. Софийская)",
+					"Софийская д.40",
+					"Софийская д.43",
+					"Белы Куна (ул. Софийская)",
+					"Белы Куна (ул. Пражская)",
+					"Метро Международная"
+	            ],
+	            "К 35" : [
+	            	"Славы проспект (ул. Софийская)",
+					"Софийская д.40",
+					"Софийская д.43",
+					"Белы Куна (ул. Софийская)",
+					"Белы Куна (ул. Пражская)",
+					"Метро Международная"
+	            ],
+	            "45" : [
+	            	"Славы проспект (ул. Софийская)",
+					"Софийская д.40",
+					"Софийская д.43",
+					"Белы Куна (ул. Софийская)",
+					"Белы Куна (ул. Пражская)",
+					"Метро Международная"
+	            ]
+	        }
+	    },
+	    "Волково": {
+	        "routes" : {
+	            "К 65" : [
+	            	"Славы проспект (ул. Софийская)",
+					"Софийская д.40",
+					"Софийская д.43",
+					"Белы Куна (ул. Софийская)",
+					"Белы Куна (ул. Пражская)",
+					"Метро Международная"
+	            ],
+	            "К 46" : [
+	            	"Славы проспект (ул. Софийская)",
+					"Софийская д.40",
+					"Софийская д.43",
+					"Белы Куна (ул. Софийская)",
+					"Белы Куна (ул. Пражская)",
+					"Метро Международная"
+	            ],
+	            "К 4" : [
+	            	"Славы проспект (ул. Софийская)",
+					"Софийская д.40",
+					"Софийская д.43",
+					"Белы Куна (ул. Софийская)",
+					"Белы Куна (ул. Пражская)",
+					"Метро Международная"
+	            ],
+	            "К 48" : [
+	            	"Славы проспект (ул. Софийская)",
+					"Софийская д.40",
+					"Софийская д.43",
+					"Белы Куна (ул. Софийская)",
+					"Белы Куна (ул. Пражская)",
+					"Метро Международная"
+	            ],
+	            "К 35" : [
+	            	"Славы проспект (ул. Софийская)",
+					"Софийская д.40",
+					"Софийская д.43",
+					"Белы Куна (ул. Софийская)",
+					"Белы Куна (ул. Пражская)",
+					"Метро Международная"
+	            ],
+	            "45" : [
+	            	"Славы проспект (ул. Софийская)",
+					"Софийская д.40",
+					"Софийская д.43",
+					"Белы Куна (ул. Софийская)",
+					"Белы Куна (ул. Пражская)",
+					"Метро Международная"
+	            ]
+	        }
 	    }
 	};
 
@@ -386,16 +523,19 @@ $(document).ready(function() {
 	$('#txt').on('input propertychange', function() {
 		var str = $(this).val();
 		$(list).children().remove();
+		$(this).off('keydown');
 		if (str.length >= 1) {
 			search(str, suggest(str));
 			if (!$(listArrow).hasClass('active')) {
 				$(listArrow).click();
+				
 			}
 		} else {
 			if ($(listArrow).hasClass('active')) {
 				$(listArrow).click();
 			}
 		}
+		$(this).on('keydown', keyDownHandler);
 	});
 
 	// scroll
