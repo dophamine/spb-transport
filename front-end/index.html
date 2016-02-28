@@ -1,107 +1,51 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-	<meta charset="UTF-8">
-	<title>app</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,400italic,300italic,300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.min.css">
-	<link rel="stylesheet" href="assets/styles/bundle.min.css">
-	<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-</head>
-<body>
-	<div class="wrapper">
-		<div id="map"></div>
-		<div id="panel">
-			<button id="toggle-panel" class="arrow arrow-right"></button>
-			<div class="panel-wrap">
-			<div class="panel-container">
-				<h1 class="title">Выбрать транспорт по типу поиска</h1>
-				<div class="type-wrap">
-					<a href="route" data-hint="Выбрать из маршрутов" class="type type-route">по маршруту</a>
-					<a href="stop" data-hint="Выбрать из остановок" class="type type-stop">по остановке</a>
-					<a href="street" data-hint="Выбрать из улиц" class="type type-street">по улице</a>
-					<a href="metro" data-hint="Выбрать из станций метро" class="type type-metro">по станции метро</a>
-				</div>
-				<div class="input-menu">
-					<div class="input-wrap">
-						<div id="main-input">
-							<input id="txt" type="text" name="txt" value="" placeholder="Выбрать из станций метро">
-						</div>
-						<div class="arrow arrow-bottom"></div>
-					</div>				
-					<div class="vars-wrap">
-						<ul id="list" class="vars">
-					</ul>
-					</div>
-				</div>
-				<div id="routes">
-					<!-- <div class="route-section">
-						<h2 class="district-title">Старая деревня:</h2>
-						<ul class="route-list">
-							<li class="route">
-								<span class="route-title">К 145</span>
-								<div class="detail"><a href="#" class="detail-txt">Подробнее</a></div>
-							</li>
-							<li class="route">
-								<span class="route-title">К 145</span>
-								<div class="detail"><span class="detail-txt">Подробнее</span></div>
-							</li>
-							<li class="route">
-								<span class="route-title">К 145</span>
-								<div class="detail"><span class="detail-txt">Подробнее</span></div>
-							</li>
-							<li class="route">
-								<span class="route-title">К 145</span>
-								<div class="detail"><span class="detail-txt">Подробнее</span></div>
-							</li>
-							<li class="route">
-								<span class="route-title">К 145</span>
-								<div class="detail"><span class="detail-txt">Подробнее</span></div>
-							</li>
-							<li class="route">
-								<span class="route-title">К 145</span>
-								<div class="detail"><span class="detail-txt">Подробнее</span></div>
-							</li>
-						</ul>
-					</div>
-					<div class="route-section">
-						<h2 class="district-title">Старая деревня:</h2>
-						<ul class="route-list">
-							<li class="route">
-								<span class="route-title">К 145</span>
-								<div class="detail"><span class="detail-txt">Подробнее</span></div>
-							</li>
-							<li class="route">
-								<span class="route-title">К 145</span>
-								<div class="detail"><span class="detail-txt">Подробнее</span></div>
-							</li>
-							<li class="route">
-								<span class="route-title">К 145</span>
-								<div class="detail"><span class="detail-txt">Подробнее</span></div>
-							</li>
-							<li class="route">
-								<span class="route-title">К 145</span>
-								<div class="detail"><span class="detail-txt">Подробнее</span></div>
-							</li>
-							<li class="route">
-								<span class="route-title">К 145</span>
-								<div class="detail"><span class="detail-txt">Подробнее</span></div>
-							</li>
-							<li class="route">
-								<span class="route-title">К 145</span>
-								<div class="detail"><span class="detail-txt">Подробнее</span></div>
-							</li>
-						</ul>
-					</div> -->
-				</div>
-			</div>
-			</div>
-			<a id="orderNow" href="">заказать</a>
-		</div>
-	</div>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.concat.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="assets/scripts/main.min.js" type="text/javascript" charset="utf-8"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>app</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,400italic,300italic,300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.min.css">
+        <link rel="stylesheet" href="assets/styles/bundle.min.css">
+        <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div id="map"></div>
+            <div id="panel">
+                <button id="toggle-panel" class="arrow arrow-right"></button>
+                <div class="panel-wrap">
+                    <div class="panel-container">
+                        <h1 class="title">Выбрать транспорт по типу поиска</h1>
+                        <div class="type-wrap">
+                            <a href="dt/routes.json" id="lroute" data-hint="Выбрать из маршрутов" class="type type-route source">по маршруту</a>
+                            <a href="dt/stops.json" id="lstop" data-hint="Выбрать из остановок" class="type type-stop source">по остановке</a>
+                            <a href="dt/streets.json" id="lstreet" data-hint="Выбрать из улиц" class="type type-street source">по улице</a>
+                            <a href="dt/metro.json" id="lmetro" data-hint="Выбрать из станций метро" class="type type-metro source">по станции метро</a>
+                        </div>
+                        <div class="input-menu">
+                            <div class="input-wrap">
+                                <div id="main-input">
+                                    <input id="txt" type="text" name="txt" value="" placeholder="Выбрать из станций метро">
+                                </div>
+                                <div class="arrow arrow-bottom"></div>
+                            </div>				
+                            <div class="vars-wrap">
+                                <div class="vars-inner">
+                                	<ul id="list" class="vars">
+                                	</ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="routes">
+                        </div>
+                    </div>
+                </div>
+                <a id="orderNow" href="">заказать</a>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.concat.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="assets/scripts/main.min.js" type="text/javascript" charset="utf-8"></script>
+    </body>
 </html>

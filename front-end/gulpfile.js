@@ -70,7 +70,7 @@ gulp.task('scripts', function() {
 		.pipe(rename({
 			suffix: '.min'
 		}))
-		.pipe(uglify())
+		// .pipe(uglify())
 		.pipe(gulp.dest('../public/assets/scripts/'))
 		.pipe(browserSync.reload({
 			stream: true
